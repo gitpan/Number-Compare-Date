@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Number-Compare-Date
-version: 0.01
+version: 0.02
 license: perl
 distribution_type: module
 requires:
@@ -13,5 +13,5 @@ conflicts: {}
 provides:
   Number::Compare::Date:
     file: lib/Number/Compare/Date.pm
-    version: 0.01
+    version: 0.02
 generated_by: Module::Build version 0.18_02

@@ -8,7 +8,7 @@ use strict;
 use Carp qw(croak);
 
 use vars qw($VERSION);
-$VERSION = "0.01";
+$VERSION = "0.02";
 
 =head1 NAME
 
@@ -35,6 +35,9 @@ Or it can be anything Date::Parse can recognise:
 
   my $perl583 = Number::Compare->new('<Wed, 31 Dec 2003 23:59:59');
 
+If you don't use a comparison operator (C<< < >>, C<< <= >>, C<< >= >>
+or C<< > >>), then the module will check if the date is equal.
+
 See L<Date::Parse> for more formats.
 
 =cut
@@ -51,6 +54,9 @@ sub parse_to_perl
 	     (.*?)       # value
 	     $}ix
     or croak "don't understand '$test' as a test";
+
+  # check that the comparison is defined
+  $comparison ||= "==";
 
   # check if the target is all digits
   unless ($target =~ m/^\d+$/)

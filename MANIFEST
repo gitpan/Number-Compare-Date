@@ -5,3 +5,4 @@ MANIFEST.SKIP
 t/01basic.t
 Makefile.PL
 META.yml
+CHANGES

@@ -8,7 +8,7 @@ use FindBin;
 use lib (catdir($FindBin::Bin,"mylib"));
 
 # start the testing
-use Test::More tests => 37;
+use Test::More tests => 46;
 
 BEGIN { use_ok "Number::Compare::Date" }
 
@@ -28,6 +28,11 @@ ok(!$y2k_comp->($y2k_time+1));
 
 $y2k_comp = Number::Compare::Date->new("<=$y2k");
 ok($y2k_comp->($y2k_time-1));
+ok($y2k_comp->($y2k_time));
+ok(!$y2k_comp->($y2k_time+1));
+
+$y2k_comp = Number::Compare::Date->new("$y2k");
+ok(!$y2k_comp->($y2k_time-1));
 ok($y2k_comp->($y2k_time));
 ok(!$y2k_comp->($y2k_time+1));
 
